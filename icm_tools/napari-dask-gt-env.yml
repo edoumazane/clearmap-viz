@@ -1,0 +1,27 @@
+# Run conda env create -f <path to this file> to create the environment
+# Run conda env update -f <path to this file> to update the environment
+name: napari-dask-gt-env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10 
+  - pip
+  - graph-tool
+  - dask-image
+  - pandoc
+  - cython<3
+  - pip:
+    - napari[all]
+    - jupyter
+    - jupyter_contrib_nbextensions
+    - matplotlib
+    - seaborn
+    - scikit-image
+    - scikit-learn
+    - pandas
+    - tifffile
+    - markdown
+    - tqdm
+    - zarr
+    - itk-morphologicalcontourinterpolation
