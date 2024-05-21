@@ -1,4 +1,4 @@
-from .params import LOCAL_CLEARMAP
+from .params import LOCAL_CLEARMAP, __file__ as params_file
 from .utils import timestamp_error, timestamp_info, timestamp_ok, timestamp_warning
 import sys
 from pathlib import Path
@@ -9,14 +9,15 @@ try:
     import ClearMap.Analysis.Graphs.GraphGt as ggt
 except ImportError:
     import sys
-    timestamp_info("ClearMap not accessible. Appending ClearMap local path.")
+    timestamp_warning("ClearMap not accessible. Appending ClearMap local path.")
     if str(LOCAL_CLEARMAP) not in sys.path:
         sys.path.append(str(LOCAL_CLEARMAP))
     try:
         import ClearMap.Analysis.Graphs.GraphGt as ggt
+        timestamp_ok(f"ClearMap is now accessed from {LOCAL_CLEARMAP}.")
     except Exception as e:
-        timestamp_warning(f"Could not import ClearMap. Make sure it is installed and accessible from the current environment. {e}")
-        load_graph = None
+        timestamp_warning(f"Could not import ClearMap. You may want to install it on env or write ClearMap's path in module {params_file}. {e}")
+        load_graph = lambda x: timestamp_error("Cannot load_graph. ClearMap not accessible.")
 
 
 def load_graph(fpath):

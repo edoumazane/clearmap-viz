@@ -9,3 +9,17 @@ conda env create -f environment.yml
 conda activate clearmap-viz
 pip install -e .
 ```
+
+```bash
+git clone git@github.com:edoumazane/clearmap-viz.git
+cd clearmap-viz
+conda env create -f environment.yml
+conda activate clearmap-viz
+pip install -e .
+```
+
+```bash
+conda env create -f ClearMapUi311.yml
+conda activate ClearMapUi311
+pip install -e .
+```

@@ -1,8 +1,9 @@
+from .utils import timestamp_error, timestamp_info, timestamp_ok, timestamp_warning
 from matplotlib.colors import hsv_to_rgb
 try:
     import pyvista as pv
 except ImportError:
-    print("Could not import pyvista.")
+    timestamp_warning("Could not import pyvista.")
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -11,7 +12,6 @@ import graph_tool.all as gt
 from pathlib import Path
 
 from .data import load_img
-from .utils import timestamp_error, timestamp_info, timestamp_ok, timestamp_warning
 from .params import LOCAL_CLEARMAP
 # from .graph_utils import Graph
 
